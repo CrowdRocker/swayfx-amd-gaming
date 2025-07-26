@@ -5,7 +5,7 @@ A collection of configs and scripts for an optimized SwayFX gaming environment o
 ## Usage
 
 ```sh
-git clone https://github.com/<yourusername>/swayfx-amd-gaming.git
+git clone https://github.com/CrowdRocker/swayfx-amd-gaming.git
 cd swayfx-amd-gaming
 chmod +x install_swayfx_amd_gaming.sh
 ./install_swayfx_amd_gaming.sh
