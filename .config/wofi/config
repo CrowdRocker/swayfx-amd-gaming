@@ -1,0 +1,6 @@
+prompt=Run:
+width=500
+height=300
+show=drun
+insensitive=true
+allow_markup=true

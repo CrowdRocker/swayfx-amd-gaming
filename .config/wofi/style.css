@@ -1,0 +1,12 @@
+window {
+  background: rgba(26,27,38,0.92);
+  border-radius: 10px;
+}
+#entry:selected {
+  background: #bb9af7;
+  color: #1a1b26;
+}
+#input, #prompt {
+  background: #1e2030;
+  color: #c0caf5;
+}

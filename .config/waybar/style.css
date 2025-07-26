@@ -1,0 +1,62 @@
+* {
+  border: none;
+  border-radius: 10px;
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Brands";
+  font-size: 13px;
+  min-height: 0;
+}
+window {
+  background: rgba(26,27,38,0.92);
+  color: #c0caf5;
+  border-radius: 12px;
+}
+#workspaces {
+  background: transparent;
+}
+#workspaces button {
+  color: #c0caf5;
+  background: transparent;
+  border-radius: 10px;
+  margin: 2px 4px;
+  padding: 0 8px;
+}
+#workspaces button.active {
+  color: #1a1b26;
+  background: #bb9af7;
+}
+#workspaces button.urgent {
+  color: #f7768e;
+}
+#clock, #cpu, #memory, #battery, #network, #pulseaudio, #tray, #temperature, #disk, #custom-spotify, #custom-weather, #custom-updates, #custom-notif {
+  background: rgba(122,162,247, 0.22);
+  color: #c0caf5;
+  border-radius: 10px;
+  margin: 2px 6px;
+  padding: 0 12px;
+}
+#custom-rofi, #custom-power {
+  background: rgba(187,154,247,0.22);
+  color: #bb9af7;
+  border-radius: 10px;
+  margin: 2px 6px;
+  padding: 0 12px;
+  font-size: 16px;
+}
+#custom-rofi:hover, #custom-power:hover {
+  background: #bb9af7;
+  color: #1a1b26;
+  transition: all 0.15s;
+}
+#custom-spotify {
+  color: #1db954;
+  background: rgba(29,185,84,0.10);
+}
+#custom-weather {
+  color: #7aa2f7;
+}
+#custom-updates {
+  color: #bb9af7;
+}
+#custom-notif {
+  color: #c0caf5;
+}

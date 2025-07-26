@@ -1,0 +1,48 @@
+set $mod Mod4
+set $term alacritty
+set $menu wofi --show drun
+
+output * bg ~/Pictures/wallpaper.jpg fill
+
+swayfx_effects {
+  blur enable
+  blur_radius 12
+  blur_iterations 5
+  shadow enable
+  shadow_radius 24
+  shadow_opacity 0.6
+  fade enable
+  fade_in on
+  fade_out on
+  corner_radius 12
+  opacity 0.92
+  unfocused_opacity 0.85
+}
+
+exec_always --no-startup-id waybar
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id blueman-applet
+exec_always --no-startup-id flameshot
+exec_always --no-startup-id ~/.config/sway/scripts/idle.sh
+
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym Print exec flameshot gui
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioMute exec pamixer -t
+
+bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+bindsym $mod+Shift+x exec swaylock -f --effect-blur 7x5
+
+bindsym $mod+F1 exec ~/.config/sway/scripts/launch-tfd.sh
+bindsym $mod+F2 exec ~/.config/sway/scripts/launch-division2.sh
+bindsym $mod+F3 exec ~/.config/sway/scripts/launch-cyberpunk2077.sh
+bindsym $mod+F4 exec ~/.config/sway/scripts/launch-fallout4.sh
+
+include ~/.config/sway/theme-tokyonight

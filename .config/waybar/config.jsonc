@@ -1,0 +1,88 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin": "10",
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "custom/rofi",
+    "custom/power"
+  ],
+  "modules-center": [
+    "custom/spotify",
+    "clock",
+    "custom/weather"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "temperature",
+    "disk",
+    "battery",
+    "pulseaudio",
+    "network",
+    "tray",
+    "custom/updates",
+    "custom/notif"
+  ],
+  "custom/rofi": {
+    "format": "",
+    "tooltip": "App Launcher (Rofi)",
+    "on-click": "rofi -show drun"
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": "Power Menu",
+    "on-click": "~/.config/waybar/scripts/power_menu.sh"
+  },
+  "clock": {
+    "format": " {:%a %Y-%m-%d %H:%M}"
+  },
+  "battery": {
+    "full-at": 98,
+    "format": "{capacity}% {icon}"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": " {temperatureC}°C"
+  },
+  "cpu": {
+    "format": " {usage}%"
+  },
+  "memory": {
+    "format": " {used}G/{total}G"
+  },
+  "disk": {
+    "format": " {free}G"
+  },
+  "network": {
+    "format-wifi": " {essid} {signalStrength}%",
+    "format-ethernet": "󰈀 {ipaddr}/{cidr}"
+  },
+  "tray": {
+    "icon-size": 14
+  },
+  "custom/spotify": {
+    "format": " {}",
+    "exec": "~/.config/waybar/scripts/spotify_status.sh",
+    "interval": 5
+  },
+  "custom/updates": {
+    "format": " {}",
+    "exec": "~/.config/waybar/scripts/updates.sh",
+    "interval": 600
+  },
+  "custom/weather": {
+    "format": " {}",
+    "exec": "~/.config/waybar/scripts/weather.sh",
+    "interval": 600
+  },
+  "custom/notif": {
+    "format": " {}",
+    "exec": "~/.config/waybar/scripts/notifications.sh",
+    "interval": 1
+  }
+}
