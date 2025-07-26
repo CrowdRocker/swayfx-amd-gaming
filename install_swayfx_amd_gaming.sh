@@ -33,47 +33,7 @@ fi
 
 sudo pacman -Syu
 
-echo "Setting up GRUB..."
-BACKUP="/etc/default/grub.bak.$(date +%F-%T)"
-GRUB_CFG="/etc/default/grub"
 
-echo "Backing up current GRUB config to $BACKUP"
-sudo cp "$GRUB_CFG" "$BACKUP"
-
-# Detect swap UUID for resume param
-SWAP_UUID=$(blkid -t TYPE=swap -o value -s UUID)
-if [ -z "$SWAP_UUID" ]; then
-  echo "⚠️ No swap partition UUID found. Skipping resume parameter."
-  RESUME_PARAM=""
-else
-  RESUME_PARAM="resume=UUID=$SWAP_UUID"
-fi
-
-# New kernel parameters
-NEW_PARAMS="quiet splash amdgpu.dc=1 amdgpu.enable_fsync=1 amdgpu.async_flip=1 mitigations=off zswap.enabled=1 $RESUME_PARAM"
-
-echo "Setting GRUB_CMDLINE_LINUX_DEFAULT kernel params to:"
-echo "  $NEW_PARAMS"
-
-sudo sed -i "s/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=3/" "$GRUB_CFG"
-
-if grep -q "^GRUB_CMDLINE_LINUX_DEFAULT=" "$GRUB_CFG"; then
-  sudo sed -i "s|^GRUB_CMDLINE_LINUX_DEFAULT=.*|GRUB_CMDLINE_LINUX_DEFAULT=\"$NEW_PARAMS\"|" "$GRUB_CFG"
-else
-  echo "GRUB_CMDLINE_LINUX_DEFAULT=\"$NEW_PARAMS\"" | sudo tee -a "$GRUB_CFG"
-fi
-
-if ! grep -q "^GRUB_CMDLINE_LINUX=" "$GRUB_CFG"; then
-  echo 'GRUB_CMDLINE_LINUX=""' | sudo tee -a "$GRUB_CFG"
-fi
-
-echo "Updating GRUB configuration..."
-
-if [ -d /sys/firmware/efi ]; then
-  sudo grub-mkconfig -o /boot/efi/EFI/arch/grub.cfg
-else
-  sudo grub-mkconfig -o /boot/grub/grub.cfg
-fi
 
 echo -e "\n✅ GRUB tweaks applied! Reboot your system to take effect."
 
@@ -86,7 +46,7 @@ yay -Sy --noconfirm \
 
 
 echo "==> Installing latest Swaylock-effects and ProtonGE (optional)..."
-yay -S --noconfirm swaylock-effects proton-ge-custom
+yay -S --noconfirm --needed swaylock-effects proton-ge-custom
 
 echo "==> Copying configs..."
 cp -r config/* ~/.config/
