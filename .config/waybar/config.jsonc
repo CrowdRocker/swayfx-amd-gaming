@@ -14,6 +14,8 @@
     "custom/weather"
   ],
   "modules-right": [
+    "custom/keyboard-layout",
+    "idle_inhibitor",
     "cpu",
     "memory",
     "temperature",
@@ -25,6 +27,38 @@
     "custom/updates",
     "custom/notif"
   ],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10"
+        }
+        "custom/keyboard-layout": {
+      	"exec": "i=$(swaymsg -t get_inputs); echo \"\"; echo \"$i\" | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+        "format": "",
+        // Interval set only as a fallback; use signal to update the module more immediately
+        "interval": 30,
+        // See example config for sending signal to Waybar in ~/.config/sway/config.d/input
+        "signal": 1,
+        "on-click": "~/.config/waybar/scripts/keyhint.sh"
+       },
+        "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip-format-activated": "Idle Inhibitor Activated",
+        "tooltip-format-deactivated": "Idle Inhibitor Deactivated"
+    },
   "custom/rofi": {
     "format": "",
     "tooltip": "App Launcher (Rofi)",

@@ -1,6 +1,6 @@
 #!/bin/bash
-CITY="London"
-APIKEY="your_openweathermap_api_key"
+CITY="Lincoln"
+APIKEY="8757378ef1931291f070a0ebcce431e7"
 weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?q=$CITY&appid=$APIKEY&units=metric")
 if [ "$weather" ]; then
     temp=$(echo "$weather" | jq '.main.temp' | cut -d. -f1)
